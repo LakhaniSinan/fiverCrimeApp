@@ -29,7 +29,19 @@ function DashoardStack() {
 function TrendingStack() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Dashboard" component={Trending} options={{
+            <Stack.Screen name="Trending" component={Trending} options={{
+                headerShown:false
+            }} />
+            <Stack.Screen name="Keys" component={Keys} options={{
+                headerShown:false
+            }} />
+        </Stack.Navigator>
+    );
+}
+function ReportStack() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Report" component={Report} options={{
                 headerShown:false
             }} />
             <Stack.Screen name="Keys" component={Keys} options={{
@@ -49,7 +61,7 @@ export default function BottomNavigation() {
         >
             <Tab.Screen name="Dashboard" component={DashoardStack} />
             <Tab.Screen name="Trending" component={TrendingStack} />
-            <Tab.Screen name="Report" component={Report} />
+            <Tab.Screen name="Report" component={ReportStack} />
             <Tab.Screen name="Settings" component={Settings} />
             <Tab.Screen name="Privacy" component={Privacy} />
         </Tab.Navigator>

@@ -5,7 +5,7 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 const Keys = ({ route,navigation }) => {
     const { keyData } = route.params
     return (
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
             <View style={{ justifyContent: "center", alignItems: 'center', height: 60 }}>
                 <View style={{ position: "absolute", left: 10 }}>
                     <TouchableOpacity onPress={()=>navigation.goBack()}>
@@ -29,7 +29,7 @@ const Keys = ({ route,navigation }) => {
                                 />
                             </View>
                             <View style={{flex:9}}>
-                            <Text style={{marginLeft:10,marginRight:2,color:"#A1A1A1",fontSize:18}}>{result.desc}</Text>
+                            <Text style={{marginLeft:10,marginRight:2,color:"#A1A1A1",fontSize:16}}>{result.desc}</Text>
                             </View>
                         </View>
                     )
