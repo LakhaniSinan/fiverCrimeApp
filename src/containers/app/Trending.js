@@ -55,7 +55,8 @@ let keyData = [
     },
     {
         image: require("../../assets/location_green.png"),
-        desc: "Location the crime take place"
+        desc: "Location the crime take place",
+        type:"location"
     },
     {
         image: require("../../assets/timmer.png"),
@@ -68,17 +69,17 @@ let keyData = [
 ]
 
 
-const Trending = ({navigation}) => {
+const Trending = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={{ justifyContent: "center", backgroundColor: "#17BBA9", alignItems: 'center', height: 50 }}>
                 <View style={{ position: "absolute", left: 10 }}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Ionicons name="arrow-back" size={23} color="white"  />
+                        <Ionicons name="arrow-back" size={23} color="white" />
                     </TouchableOpacity>
                 </View>
                 <View style={{ position: "absolute", right: 10 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate("Keys",{
+                    <TouchableOpacity onPress={() => navigation.navigate("Keys", {
                         keyData
                     })}>
                         {/* <Ionicons name="arrow-back" size={30} color="white" /> */}
@@ -87,7 +88,7 @@ const Trending = ({navigation}) => {
                 </View>
                 <Text style={{
                     fontSize: 22,
-                    color:"white"
+                    color: "white"
                 }}>Trending's</Text>
             </View>
 
@@ -95,39 +96,45 @@ const Trending = ({navigation}) => {
                 {data.map((result, index) => {
                     return (
                         <View style={{ paddingVertical: 20, marginHorizontal: 10, borderRadius: 10, borderWidth: 1, marginTop: 10, borderColor: "#a3a3a3" }}>
-                            <View style={{ flexDirection: "row", justifyContent: 'space-between', marginHorizontal: 20 }}>
-                                <Text style={{
-                                    color:"#6D6B6B",
-                                    fontSize:18
-                                }}>{result.type}</Text>
-                                <Text style={{fontWeight:"bold"}}>{result.minutes}</Text>
-                            </View>
-                            <View style={{ flexDirection: "row", marginHorizontal: 13, marginTop: 20 }}>
-                                <View style={{}}>
-                                    <EvilIcons name="location" color="#17BBA9" size={24} />
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate("TrendingDetails", { data: result })}
+                            >
+
+                                <View style={{ flexDirection: "row", justifyContent: 'space-between', marginHorizontal: 20 }}>
+                                    <Text style={{
+                                        color: "#6D6B6B",
+                                        fontSize: 18
+                                    }}>{result.type}</Text>
+                                    <Text style={{ fontWeight: "bold" }}>{result.minutes}</Text>
                                 </View>
-                                <Text style={{
-                                    color:'#6D6B6B'
-                                }}>{result.location}</Text>
-                                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-around", borderRadius: 2, height: 25, marginLeft: vw * 0.13, backgroundColor: 'green', width: 50 }}>
-                                    <FontAwesome name="long-arrow-up" color="white" />
-                                    <Text style={{ color: "white" }}>{result.upvote}</Text>
+                                <View style={{ flexDirection: "row", marginHorizontal: 13, marginTop: 20 }}>
+                                    <View style={{}}>
+                                        <EvilIcons name="location" color="#17BBA9" size={24} />
+                                    </View>
+                                    <Text style={{
+                                        color: '#6D6B6B'
+                                    }}>{result.location}</Text>
+                                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-around", borderRadius: 2, height: 25, marginLeft: vw * 0.13, backgroundColor: 'green', width: 50 }}>
+                                        <FontAwesome name="long-arrow-up" color="white" />
+                                        <Text style={{ color: "white" }}>{result.upvote}</Text>
+                                    </View>
+                                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginLeft: 10, borderRadius: 2, height: 25, backgroundColor: 'red', width: 50 }}>
+                                        <FontAwesome name="long-arrow-down" color="white" />
+                                        <Text style={{ color: "white" }}>{result.downvote}</Text>
+                                    </View>
                                 </View>
-                                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginLeft: 10, borderRadius: 2, height: 25, backgroundColor: 'red', width: 50 }}>
-                                    <FontAwesome name="long-arrow-down" color="white" />
-                                    <Text style={{ color: "white" }}>{result.downvote}</Text>
-                                </View>
-                            </View>
+                            </TouchableOpacity>
+
                         </View>
                     )
                 })}
             </View>
 
-            <View style={{flex:1,justifyContent:"flex-end",alignItems:"center",marginBottom:10}}>
-                <TouchableOpacity style={{width:337,backgroundColor:"#17BBA9",height:45,borderRadius:10,justifyContent:"center",alignItems:"center"}}>
+            <View style={{ flex: 1, justifyContent: "flex-end", alignItems: "center", marginBottom: 10 }}>
+                <TouchableOpacity style={{ width: 337, backgroundColor: "#17BBA9", height: 45, borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
                     <Text style={{
-                        color:"white",
-                        fontSize:18
+                        color: "white",
+                        fontSize: 18
                     }}>Report a Crime</Text>
                 </TouchableOpacity>
             </View>

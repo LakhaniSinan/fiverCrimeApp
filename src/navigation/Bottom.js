@@ -6,6 +6,7 @@ import Trending from '../containers/app/Trending';
 import Report from '../containers/app/Report';
 import Settings from '../containers/app/Settings';
 import Privacy from '../containers/app/Privacy';
+import TredingDetails from '../containers/app/TredingDetails';
 import Keys from "../components/keys"
 import CustomBottom from './CustomBottom';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -30,6 +31,9 @@ function TrendingStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Trending" component={Trending} options={{
+                headerShown:false
+            }} />
+            <Stack.Screen name="TrendingDetails" component={TredingDetails} options={{
                 headerShown:false
             }} />
             <Stack.Screen name="Keys" component={Keys} options={{

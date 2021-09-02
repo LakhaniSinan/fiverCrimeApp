@@ -1,6 +1,16 @@
 import React from "react"
 import { View, Text, SafeAreaView, Image, TouchableWithoutFeedback } from "react-native"
 import { Colors } from "../constants"
+import DashboardWhite from "../assets/svg/dashboard_white.svg"
+import DashboardGrey from "../assets/svg/dashboard_grey.svg"
+import ReportGrey from "../assets/svg/Report_grey.svg"
+import ReportWhite from "../assets/svg/Report_white.svg"
+import PrivacyWhite from "../assets/svg/privacy_white.svg"
+import PrivacyGrey from "../assets/svg/privacy_grey.svg"
+import TrendingGrey from "../assets/svg/trending_grey.svg"
+import TrendingWhite from "../assets/svg/trending_white.svg"
+import SettingsGrey from "../assets/svg/settings_grey.svg"
+import SettingsWhite from "../assets/svg/settings_white.svg"
 let items = [
     {
         name: "Dashboard",
@@ -9,20 +19,23 @@ let items = [
     },
     {
         name: "Trending",
-        imageInActive: require("../assets/bottomnoti.png"),
+        imageInActive: require("../assets/trnding_grey.png"),
         imageActive: require("../assets/trending_white.png")
     },
     {
         name: "Report",
-        image: require("../assets/bottomnoti.png")
+        imageInActive: require("../assets/post_grey.png"),
+        imageActive: require("../assets/post_white.png")
     },
     {
         name: "Settings",
-        image: require("../assets/bottomnoti.png")
+        imageInActive: require("../assets/settings_grey.png"),
+        imageActive: require("../assets/settings_white.png")
     },
     {
         name: "Privacy",
-        image: require("../assets/bottomnoti.png")
+        imageInActive: require("../assets/privacy_grey.png"),
+        imageActive: require("../assets/privacy_white.png")
     },
 ]
 
@@ -57,15 +70,52 @@ const CustomBottom = (props) => {
                         >
                             <View key={index} style={{ flexDirection: "column" }}>
                                 <View style={{ justifyContent: "center", alignItems: 'center' }}>
-                                    <Image source={isFocused ?
+                                    {/* <Image source={isFocused ?
                                         item.imageActive :
                                         item.imageInActive}
-                                    />
+                                        resizeMode="contain"
+                                        style={{ height: 20, width: 20 }}
+                                    /> */}
+                                    {item.name == "Dashboard" && isFocused == true ?
+                                        <DashboardWhite size={30} />
+                                        : item.name == "Dashboard" && isFocused == false ?
+                                            <DashboardGrey size={30} />
+                                            :
+                                            item.name == "Report" && isFocused == false ?
+                                                <ReportGrey size={30} />
+                                                :
+                                                item.name == "Report" && isFocused == true ?
+                                                    <ReportWhite size={30} />
+                                                    :
+                                                    item.name == "Trending" && isFocused == true ?
+                                                        <TrendingWhite size={30} />
+                                                        :
+                                                        item.name == "Trending" && isFocused == false
+                                                            ?
+                                                            <TrendingGrey size={30} />
+                                                            :
+                                                            item.name == "Privacy" && isFocused == true ?
+                                                                <PrivacyWhite size={30} />
+                                                                :
+                                                                item.name == "Privacy" && isFocused == false ?
+                                                                    <PrivacyGrey size={30} />
+                                                                    :
+                                                                    item.name == "Settings" && isFocused == true ?
+                                                                        <SettingsWhite size={30} />
+                                                                        :
+                                                                        item.name == "Settings" && isFocused == false ?
+                                                                            <SettingsGrey size={30} />
+                                                                            :
+                                                                            null
+
+                                    }
+                                    {/* <DashboardWhite size={30} color="pink" /> */}
                                 </View>
-                                <View>
+                                <View style={{ justifyContent: "flex-end" }}>
                                     <Text style={{
-                                        textAlign: "center", color:
-                                            isFocused ? "white" : "#a3a3a3"
+                                        textAlign: "center", color: "white",
+                                        opacity: isFocused ? 1 : 0.5
+
                                     }}>{item.name}</Text>
                                 </View>
                             </View>

@@ -7,7 +7,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome"
 import { Picker } from '@react-native-picker/picker';
 import { Colors, vh, vw } from "../../constants"
 
-const Privacy = () => {
+const Privacy = ({navigation}) => {
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
             <View style={{ justifyContent: "center", backgroundColor: "#17BBA9", alignItems: 'center', height: 50 }}>
